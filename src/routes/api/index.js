@@ -15,7 +15,7 @@ router.get('/', async (ctx, next) => {
 })
 
 //模拟用户登录
-router.post('/login', async (ctx, next) => {
+router.post('/login', (ctx, next) => {
   const {
     userName,
     password
@@ -38,7 +38,7 @@ router.post('/login', async (ctx, next) => {
 })
 
 //上传文件 + token 验证
-router.post('/upload', auth, async (ctx, next) => {
+router.post('/upload', async (ctx, next) => {
   const file = ctx.request.files.file
   //获取文件名字
   //file.path -> 文件的绝对路径
@@ -50,7 +50,7 @@ router.post('/upload', auth, async (ctx, next) => {
 
 })
 
-router.get('/string', async (ctx, next) => {
+router.get('/string', auth,async (ctx, next) => {
   ctx.body = 'koa2 string'
 })
 
